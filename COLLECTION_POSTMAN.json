@@ -1,0 +1,238 @@
+{
+	"info": {
+		"_postman_id": "td-soa-to-rest-collection",
+		"name": "TD SOA_TO_REST - Tests Complets",
+		"description": "Collection Postman pour tester tous les services du TD Partie B",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Consumer Service",
+			"item": [
+				{
+					"name": "1. Créer un serveur",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Serveur Web Production\",\n  \"ipAddress\": \"192.168.1.10\"\n}"
+						},
+						"url": {
+							"raw": "{{consumer_base_url}}/api/consumer/servers",
+							"host": ["{{consumer_base_url}}"],
+							"path": ["api", "consumer", "servers"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "2. Lister tous les serveurs",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{consumer_base_url}}/api/consumer/servers",
+							"host": ["{{consumer_base_url}}"],
+							"path": ["api", "consumer", "servers"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "3. Obtenir le statut d'un serveur",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{consumer_base_url}}/api/consumer/servers/{{server_id}}/status",
+							"host": ["{{consumer_base_url}}"],
+							"path": ["api", "consumer", "servers", "{{server_id}}", "status"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "4. Démarrer un serveur",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{consumer_base_url}}/api/consumer/servers/{{server_id}}/start",
+							"host": ["{{consumer_base_url}}"],
+							"path": ["api", "consumer", "servers", "{{server_id}}", "start"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "5. Arrêter un serveur",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{consumer_base_url}}/api/consumer/servers/{{server_id}}/stop",
+							"host": ["{{consumer_base_url}}"],
+							"path": ["api", "consumer", "servers", "{{server_id}}", "stop"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "6. Renommer un serveur",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"newName\": \"Serveur Web Principal\"\n}"
+						},
+						"url": {
+							"raw": "{{consumer_base_url}}/api/consumer/servers/{{server_id}}/rename",
+							"host": ["{{consumer_base_url}}"],
+							"path": ["api", "consumer", "servers", "{{server_id}}", "rename"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "7. Supprimer un serveur (arrêté)",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{consumer_base_url}}/api/consumer/servers/{{server_id}}",
+							"host": ["{{consumer_base_url}}"],
+							"path": ["api", "consumer", "servers", "{{server_id}}"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "8. Supprimer un serveur (démarré) - Doit échouer",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{consumer_base_url}}/api/consumer/servers/{{server_id}}",
+							"host": ["{{consumer_base_url}}"],
+							"path": ["api", "consumer", "servers", "{{server_id}}"]
+						},
+						"description": "Ce test doit échouer avec 400 si le serveur est démarré"
+					},
+					"response": []
+				},
+				{
+					"name": "9. Erreur de validation",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Serveur Test\"\n}"
+						},
+						"url": {
+							"raw": "{{consumer_base_url}}/api/consumer/servers",
+							"host": ["{{consumer_base_url}}"],
+							"path": ["api", "consumer", "servers"]
+						},
+						"description": "Test avec ipAddress manquant - doit retourner 400"
+					},
+					"response": []
+				},
+				{
+					"name": "10. Serveur non trouvé (404)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{consumer_base_url}}/api/consumer/servers/999/status",
+							"host": ["{{consumer_base_url}}"],
+							"path": ["api", "consumer", "servers", "999", "status"]
+						},
+						"description": "Test avec ID inexistant - doit retourner 404"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Middle Service",
+			"item": [
+				{
+					"name": "11. Créer un serveur via Middle",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Serveur Middle Test\",\n  \"ipAddress\": \"192.168.1.20\"\n}"
+						},
+						"url": {
+							"raw": "{{middle_base_url}}/api/servers",
+							"host": ["{{middle_base_url}}"],
+							"path": ["api", "servers"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "12. Lister les serveurs via Middle",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{middle_base_url}}/api/servers",
+							"host": ["{{middle_base_url}}"],
+							"path": ["api", "servers"]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "consumer_base_url",
+			"value": "http://localhost:8082",
+			"type": "string"
+		},
+		{
+			"key": "middle_base_url",
+			"value": "http://localhost:8081",
+			"type": "string"
+		},
+		{
+			"key": "soap_base_url",
+			"value": "http://localhost:8083",
+			"type": "string"
+		},
+		{
+			"key": "server_id",
+			"value": "1",
+			"type": "string"
+		}
+	]
+}
+
