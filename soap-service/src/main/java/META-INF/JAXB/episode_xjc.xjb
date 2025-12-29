@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<bindings version="3.0" xmlns="https://jakarta.ee/xml/ns/jaxb">
+  <!--
+
+Ce fichier a été généré par Eclipse Implementation of JAXB, v3.0.0 
+Voir https://eclipse-ee4j.github.io/jaxb-ri 
+Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
+Généré le : 2025.12.28 à 05:26:57 PM UTC 
+
+  -->
+  <bindings scd="x-schema::tns" xmlns:tns="http://example.com/soap/servers">
+    <schemaBindings map="false">
+      <package name="com.example.soap_service.generated"/>
+    </schemaBindings>
+    <bindings scd="tns:CreateServerRequest">
+      <class ref="com.example.soap_service.generated.CreateServerRequest"/>
+    </bindings>
+    <bindings scd="tns:CreateServerResponse">
+      <class ref="com.example.soap_service.generated.CreateServerResponse"/>
+    </bindings>
+    <bindings scd="~tns:Server">
+      <class ref="com.example.soap_service.generated.Server"/>
+    </bindings>
+    <bindings scd="tns:ListServersRequest">
+      <class ref="com.example.soap_service.generated.ListServersRequest"/>
+    </bindings>
+    <bindings scd="tns:ListServersResponse">
+      <class ref="com.example.soap_service.generated.ListServersResponse"/>
+    </bindings>
+    <bindings scd="tns:RenameServerRequest">
+      <class ref="com.example.soap_service.generated.RenameServerRequest"/>
+    </bindings>
+    <bindings scd="tns:RenameServerResponse">
+      <class ref="com.example.soap_service.generated.RenameServerResponse"/>
+    </bindings>
+    <bindings scd="tns:GetServerStatusRequest">
+      <class ref="com.example.soap_service.generated.GetServerStatusRequest"/>
+    </bindings>
+    <bindings scd="tns:GetServerStatusResponse">
+      <class ref="com.example.soap_service.generated.GetServerStatusResponse"/>
+    </bindings>
+    <bindings scd="tns:StartServerRequest">
+      <class ref="com.example.soap_service.generated.StartServerRequest"/>
+    </bindings>
+    <bindings scd="tns:StartServerResponse">
+      <class ref="com.example.soap_service.generated.StartServerResponse"/>
+    </bindings>
+    <bindings scd="tns:StopServerRequest">
+      <class ref="com.example.soap_service.generated.StopServerRequest"/>
+    </bindings>
+    <bindings scd="tns:StopServerResponse">
+      <class ref="com.example.soap_service.generated.StopServerResponse"/>
+    </bindings>
+    <bindings scd="tns:DeleteServerRequest">
+      <class ref="com.example.soap_service.generated.DeleteServerRequest"/>
+    </bindings>
+    <bindings scd="tns:DeleteServerResponse">
+      <class ref="com.example.soap_service.generated.DeleteServerResponse"/>
+    </bindings>
+  </bindings>
+</bindings>
+

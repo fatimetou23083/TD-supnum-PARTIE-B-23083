@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" 
+                  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" 
+                  xmlns:tns="http://example.com/soap/servers" 
+                  xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+                  targetNamespace="http://example.com/soap/servers">
+  
+  <wsdl:types>
+    <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+               xmlns:tns="http://example.com/soap/servers"
+               targetNamespace="http://example.com/soap/servers"
+               elementFormDefault="qualified">
+
+      <xs:complexType name="Server">
+        <xs:sequence>
+          <xs:element name="id" type="xs:long" minOccurs="0"/>
+          <xs:element name="name" type="xs:string"/>
+          <xs:element name="ipAddress" type="xs:string"/>
+          <xs:element name="status" type="xs:boolean"/>
+        </xs:sequence>
+      </xs:complexType>
+
+      <xs:element name="CreateServerRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="ipAddress" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+
+      <xs:element name="CreateServerResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="server" type="tns:Server"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+
+      <xs:element name="ListServersRequest">
+        <xs:complexType/>
+      </xs:element>
+
+      <xs:element name="ListServersResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="servers" type="tns:Server" minOccurs="0" maxOccurs="unbounded"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+
+      <xs:element name="RenameServerRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="id" type="xs:long"/>
+            <xs:element name="newName" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+
+      <xs:element name="RenameServerResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="server" type="tns:Server"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+
+      <xs:element name="GetServerStatusRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="id" type="xs:long"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+
+      <xs:element name="GetServerStatusResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="status" type="xs:boolean"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+
+      <xs:element name="StartServerRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="id" type="xs:long"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+
+      <xs:element name="StartServerResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="server" type="tns:Server"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+
+      <xs:element name="StopServerRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="id" type="xs:long"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+
+      <xs:element name="StopServerResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="server" type="tns:Server"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+
+      <xs:element name="DeleteServerRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="id" type="xs:long"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+
+      <xs:element name="DeleteServerResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="success" type="xs:boolean"/>
+            <xs:element name="message" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+
+    </xs:schema>
+  </wsdl:types>
+
+  <wsdl:message name="CreateServerRequest">
+    <wsdl:part name="CreateServerRequest" element="tns:CreateServerRequest"/>
+  </wsdl:message>
+  <wsdl:message name="CreateServerResponse">
+    <wsdl:part name="CreateServerResponse" element="tns:CreateServerResponse"/>
+  </wsdl:message>
+
+  <wsdl:message name="ListServersRequest">
+    <wsdl:part name="ListServersRequest" element="tns:ListServersRequest"/>
+  </wsdl:message>
+  <wsdl:message name="ListServersResponse">
+    <wsdl:part name="ListServersResponse" element="tns:ListServersResponse"/>
+  </wsdl:message>
+
+  <wsdl:message name="RenameServerRequest">
+    <wsdl:part name="RenameServerRequest" element="tns:RenameServerRequest"/>
+  </wsdl:message>
+  <wsdl:message name="RenameServerResponse">
+    <wsdl:part name="RenameServerResponse" element="tns:RenameServerResponse"/>
+  </wsdl:message>
+
+  <wsdl:message name="GetServerStatusRequest">
+    <wsdl:part name="GetServerStatusRequest" element="tns:GetServerStatusRequest"/>
+  </wsdl:message>
+  <wsdl:message name="GetServerStatusResponse">
+    <wsdl:part name="GetServerStatusResponse" element="tns:GetServerStatusResponse"/>
+  </wsdl:message>
+
+  <wsdl:message name="StartServerRequest">
+    <wsdl:part name="StartServerRequest" element="tns:StartServerRequest"/>
+  </wsdl:message>
+  <wsdl:message name="StartServerResponse">
+    <wsdl:part name="StartServerResponse" element="tns:StartServerResponse"/>
+  </wsdl:message>
+
+  <wsdl:message name="StopServerRequest">
+    <wsdl:part name="StopServerRequest" element="tns:StopServerRequest"/>
+  </wsdl:message>
+  <wsdl:message name="StopServerResponse">
+    <wsdl:part name="StopServerResponse" element="tns:StopServerResponse"/>
+  </wsdl:message>
+
+  <wsdl:message name="DeleteServerRequest">
+    <wsdl:part name="DeleteServerRequest" element="tns:DeleteServerRequest"/>
+  </wsdl:message>
+  <wsdl:message name="DeleteServerResponse">
+    <wsdl:part name="DeleteServerResponse" element="tns:DeleteServerResponse"/>
+  </wsdl:message>
+
+  <wsdl:portType name="ServersPort">
+    <wsdl:operation name="CreateServer">
+      <wsdl:input message="tns:CreateServerRequest"/>
+      <wsdl:output message="tns:CreateServerResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="ListServers">
+      <wsdl:input message="tns:ListServersRequest"/>
+      <wsdl:output message="tns:ListServersResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="RenameServer">
+      <wsdl:input message="tns:RenameServerRequest"/>
+      <wsdl:output message="tns:RenameServerResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetServerStatus">
+      <wsdl:input message="tns:GetServerStatusRequest"/>
+      <wsdl:output message="tns:GetServerStatusResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="StartServer">
+      <wsdl:input message="tns:StartServerRequest"/>
+      <wsdl:output message="tns:StartServerResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="StopServer">
+      <wsdl:input message="tns:StopServerRequest"/>
+      <wsdl:output message="tns:StopServerResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteServer">
+      <wsdl:input message="tns:DeleteServerRequest"/>
+      <wsdl:output message="tns:DeleteServerResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+
+  <wsdl:binding name="ServersPortSoap11" type="tns:ServersPort">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    
+    <wsdl:operation name="CreateServer">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+
+    <wsdl:operation name="ListServers">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+
+    <wsdl:operation name="RenameServer">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+
+    <wsdl:operation name="GetServerStatus">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+
+    <wsdl:operation name="StartServer">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+
+    <wsdl:operation name="StopServer">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+
+    <wsdl:operation name="DeleteServer">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+
+  <wsdl:service name="ServersPortService">
+    <wsdl:port name="ServersPortSoap11" binding="tns:ServersPortSoap11">
+      <soap:address location="http://localhost:8080/ws"/>
+    </wsdl:port>
+  </wsdl:service>
+
+</wsdl:definitions>
